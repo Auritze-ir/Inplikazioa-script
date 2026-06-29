@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  </head>
+  <body class="container">
+    <h2>Inplikazioa</h2>
+
+    <div class="form-group">
+      <label for="alumno">Ikaslea aukeratu:</label>
+      <select class="form-control" id="alumno">
+        <option value="">-- Hautatu ikaslea --</option>
+        <!-- ⚠️ ALDATU: jarri zure ikasleen izenak -->
+        <option>IKASLEA_1_IZENA</option>
+        <option>IKASLEA_2_IZENA</option>
+        <option>IKASLEA_3_IZENA</option>
+        <!-- ... gehitu behar adina ikasle ... -->
+        </select>
+    </div>
+
+    <div class="form-group">
+      <label for="evidencia">Ebidentzia aukeratu</label>
+      <select class="form-control" id="evidencia">
+        <option value="">-- Hautatu ebidentzia --</option>
+        <option>Falta -%3</option>
+        <option>Berandu (≤5 min) -%1</option>
+        <option>Irakaslea eta ikaskideak ez errespetatzea (Arina) -%1</option>
+        <option>Ordenagailuan jolasten -%1</option>
+        <option>Mugikorrarekin -%1</option>
+        <option>Atean ordua baino lehen -%1</option>
+        <option>Klasean behar den material guztia ez eramatea -%1</option>
+        <option>Materiala behar bezala ez zaintzea -%1</option>
+        <option>Tresneria edo baliabide digitalen erabilera desegokia -%1</option>
+        <option>Ez du lanean parte hartzen, ez da martxan jartzen, pasibotasuna edo arretarik eza -%1</option>
+        <option>Kanpo gunera ordu bat -%3</option>
+        <option>Kanpo gunera bi ordu -%6</option>
+        <option>Kanpo gunera hiru ordu -%9</option>
+        <option>Kanpo gunera lau ordu -%12</option>
+        <option>Kanpo gunera bost ordu -%15</option>
+        <option>Irakaslea eta ikaskideak ez errespetatzea (LARRIA) -%18</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="nota">Oharra (hautazkoa):</label>
+      <input type="text" class="form-control" id="nota" placeholder="Idatzi hemen zure oharra...">
+    </div>
+
+    <button class="btn btn-primary" onclick="enviarDatos()">Bidali</button>
+
+    <hr>
+
+    <h4>Erregistroaren aurrebista (Google Sheet):</h4>
+    <p>
+      <a id="sheetLink" href="#" target="_blank">
+        Ireki leiho berrian
+      </a>
+    </p>
+    <iframe id="sheetFrame" src="" width="100%" height="500px"></iframe>
+
+    <script>
+      // Orria kargatzean URL-a Code.gs-tik hartzen da automatikoki
+      google.script.run
+        .withSuccessHandler(function(url) {
+          document.getElementById("sheetLink").href = url;
+          document.getElementById("sheetFrame").src = url;
+        })
+        .getSpreadsheetUrl();
+
+      function enviarDatos() {
+        const alumno = document.getElementById("alumno").value;
+        const evidencia = document.getElementById("evidencia").value;
+        const nota = document.getElementById("nota").value;
+
+        if (alumno && evidencia) {
+          google.script.run.enviarTodo(alumno, evidencia, nota);
+          document.getElementById("nota").value = "";
+          alert("Datuak bidali dira!");
+        } else {
+          alert("Mesedez, aukeratu ikaslea eta ebidentzia.");
+        }
+      }
+    </script>
+  </body>
+</html>
