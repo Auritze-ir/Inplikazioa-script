@@ -3,7 +3,10 @@
 Tresna hau irakasleek ikasleen inplikazio-intzidentziak azkar erregistratzeko erabiltzen da, zuzenean Google Sheets-era bidaliz. Inplikazioa zeharkako gaitasunaren notaren penalizazioak automatikoki kalkulatzen dira.
 
 ---
+## Azalpen bideoa
+Dokumentu honetako jarraibideak nola egin [azalpen bideoa]([https://drive.google.com](https://drive.google.com/file/d/1OzTkkf2K0EgP0X2Chmai_cU_ik3O3AdN/view?usp=sharing))
 
+---
 ## Nola funtzionatzen du
 
 ```
