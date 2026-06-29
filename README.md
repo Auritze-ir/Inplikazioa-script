@@ -1,6 +1,6 @@
 # Inplikazio Erregistroa — Google Apps Script Web App
 
-Tresna hau irakasleek ikasleen portaera-intzidentziak azkar erregistratzeko erabiltzen da, zuzenean Google Sheets-era bidaliz. Zeharkako gaitasunen notaren penalizazioak automatikoki kalkulatzen dira.
+Tresna hau irakasleek ikasleen inplikazio-intzidentziak azkar erregistratzeko erabiltzen da, zuzenean Google Sheets-era bidaliz. Inplikazioa zeharkako gaitasunaren notaren penalizazioak automatikoki kalkulatzen dira.
 
 ---
 
@@ -12,7 +12,7 @@ Irakaslea → Google Sites (zikloko gunea) → Apps Script → Google Sheets
 
 1. Irakasleak zikloko Google Sites gunera joaten da
 2. Ikaslea eta gertaeraren ebidentzia hautatzen ditu
-3. "Bidali" sakatzean, datuak zuzenean Spreadsheet-era joaten dira
+3. "Bidali" sakatzean, datuak zuzenean Sheet-era joaten dira
 
 Erregistratzen diren datuak:
 
@@ -39,11 +39,11 @@ Erregistratzen diren datuak:
 
 ## Nola konfiguratu zure ikastetxean
 
-### 1. Google Spreadsheet berri bat sortu
+### 1. Google Sheet berri bat sortu
 
-- Ireki [Google Drive](https://drive.google.com) eta sortu Spreadsheet berri bat
-- Lehen Sheetari izena eman (adib. `EE1`, `1HGM`...)
-- Spreadsheet-aren **ID-a** kopiatu URL-etik:
+- Ireki [Google Drive](https://drive.google.com) eta sortu sheet berri bat
+- Lehen orriari (pestaina) izena eman (adib. `EE1`, `1HGM`...)
+- Sheet-aren **ID-a** kopiatu URL-etik:
   ```
   https://docs.google.com/spreadsheets/d/ --> [ID hau] <-- /edit
   ```
@@ -51,16 +51,16 @@ Erregistratzen diren datuak:
 ### 2. Google Apps Script proiektua sortu
 
 - Joan [script.google.com](https://script.google.com)-era eta sortu proiektu berri bat
-- Editorrean hiru fitxategi sortu behar dira (`Code.gs` lehenetsia dago; `index.html` eta `mainForm.html` `+` botoiarekin gehitu)
-- Fitxategi bakoitzean dagokion kodearen edukia itsatsi eskuz
+- Editorean hiru fitxategi sortu behar dira (`Code.gs` lehenetsia dago; `index.html` eta `mainForm.html` `+` botoiarekin gehitu)
+- Fitxategi bakoitzean dagokion kodearen edukia itsatsi
 
 ### 3. Code.gs konfiguratu — **behin bakarrik**
 
-Fitxategiaren hasieran dauden bi lerro hauek bakarrik aldatu behar dira:
+Fitxategiaren hasieran dauden bi lerro hauek aldatu behar dira:
 
 ```javascript
 var SPREADSHEET_ID = "ZURE_SPREADSHEET_ID_HEMEN";  // ← kopiatu 1. pausotik
-var SHEET_IZENA    = "ZURE_SHEET_IZENA_HEMEN";      // ← Spreadsheet-aren beheko fitxaren izena (adib. "EE1")
+var SHEET_IZENA    = "ZURE_SHEET_IZENA_HEMEN";      // ← Sheet-aren beheko fitxaren izena (adib. "EE1")
 ```
 
 ### 4. mainForm.html konfiguratu — ikasleen zerrenda
@@ -75,7 +75,7 @@ Bilatu `<!-- IKASLE 1 -->` eta jarri zure ikasleak:
 
 ### 5. Web App bezala zabaldu
 
-- Apps Script editorrean: `Deploy > New deployment`
+- Apps Script editorean: `Deploy > New deployment`
 - Mota: **Web app**
 - Execute as: **Me**
 - Who has access: **Anyone within [zure domeinua]**
@@ -107,10 +107,10 @@ Pestaina bakoitzak goiburu berdina dauka (Data, Ordua, Irakaslea...) eta ikasle 
 
 1. Ireki Spreadsheet-a
 2. Joan `Extensions > Apps Script`
-3. Editorrean `Code.gs` fitxategia dago lehenetsia — han itsatsi `sheet_script_Code.gs`-ren edukia eskuz
+3. Editorean `Code.gs` fitxategia dago lehenetsia — han itsatsi `sheet_script_Code.gs`-ren edukia eskuz
 4. Fitxategiaren hasieran aldatu:
    ```javascript
-   var DATU_ORRIA = "ZURE_SHEET_IZENA_HEMEN"; // adib. "EE1"
+   var DATU_ORRIA = "ZURE_SHEET_PESTAINA_IZENA_HEMEN"; // adib. "EE1"
    ```
    (`IKASLE_ZUTABEA = 4` ez aldatu — D zutabea da beti ikaslearen izena)
 5. Gorde (`Ctrl+S`) eta itxi editorra
@@ -118,18 +118,11 @@ Pestaina bakoitzak goiburu berdina dauka (Data, Ordua, Irakaslea...) eta ikasle 
 
 ### Erabili
 
-- **`Inplikazioa > Ikasleen orriak eguneratu`** — exekutatu nahi duzun bakoitzean
 - **`Inplikazioa > Goiburua ezarri (lehen aldiz)`** — lehen erabileran soilik, datu-orriak goibururik ez badu
+- **`Inplikazioa > Ikasleen orriak eguneratu`** — eskuz eguneratu nahi baduzu
 
-### Noiz exekutatu
+Erregistro berri bat sartzen den bakoitzean ikaslearen pestaina automatikoki eguneratzen da.
 
-Script-a ez da automatikoki exekutatzen datu berri bat sartzen den bakoitzean. Eskuz exekutatu, adibidez:
-- Klase bukaeran
-- Astean behin laburpena ikusi nahi denean
-
-> **Trigger automatikoa nahi baduzu:** Apps Script editorrean `Triggers > Add trigger` sakatu eta `eguneratuIkasleOrriak` funtzioa `On edit` edo denbora-tarte batekin lotu.
-
--e 
 ---
 
 *CIFP Don Bosco LHII — Lanbide Heziketa*
