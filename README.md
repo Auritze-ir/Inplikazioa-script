@@ -83,6 +83,8 @@ Bilatu `<!-- IKASLE 1 -->` eta jarri zure ikasleak:
 - Execute as: **Me**
 - Who has access: **Anyone within [zure domeinua]**
 - Egin klik `Deploy`-n eta kopiatu sortutako **URL-a**
+- **OHAR GARRANTZITSUA:** Bideoaren amaiera aldera azalpena dago aldaketak egiten direnean nola egin behar den url galdu gabe egin ahal izateko:
+        - Implementar --> Gestionar implementaciones --> Editar (lapitza) --> Versión nueva --> Implementar 
 
 ### 6. Google Sites-en txertatu
 
