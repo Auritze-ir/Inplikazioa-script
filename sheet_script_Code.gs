@@ -5,7 +5,7 @@
 // ============================================================
 
 // ⚠️ KONFIGURAZIOA
-var DATU_ORRIA     = "ZURE_SHEET_IZENA_HEMEN"; // Datuen iturria (adib. "EE1")
+var DATU_ORRIA     = "ZURE_SHEET_IZENA_HEMEN"; // Datuen iturria (adib. "1EE1D")
 var IKASLE_ZUTABEA = 4;                         // D zutabea = ikaslearen izena
 
 // ============================================================
